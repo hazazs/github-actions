@@ -6,6 +6,8 @@ public class Hazazs {
 
         System.out.println("Commit 1");
 
+        System.out.println("Commit 2");
+
     }
 
 }
