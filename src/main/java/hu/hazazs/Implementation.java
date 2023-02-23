@@ -7,4 +7,9 @@ public class Implementation implements Functional {
 
     }
 
+    @Override
+    public void notRun() {
+
+    }
+
 }

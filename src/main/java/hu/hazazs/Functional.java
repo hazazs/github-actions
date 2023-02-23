@@ -1,8 +1,9 @@
 package hu.hazazs;
-@FunctionalInterface
 public interface Functional {
 
     void run();
+
+    void notRun();
 
     boolean equals(Object obj);
 
