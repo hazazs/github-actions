@@ -2,7 +2,7 @@ name: bdqv-core-be-acr
 on:
   workflow_dispatch:
     inputs:
-      NO_CACHE:
+      noCache:
         type: boolean
         default: false
         description: Do you want to build the Docker image with --no-cache?
