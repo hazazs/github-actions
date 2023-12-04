@@ -23,9 +23,15 @@ jobs:
         run: mvn verify -Dsurefire.skip=true -P bmw --batch-mode
       - name: Print SHORT_SHA
         run: echo ${{ env.SHORT_SHA }}
-      - name: Build Docker-Image
+      - name: Docker Login to ACR
+        #uses: azure/docker-login@v1
+        #with:
+          #login-server: acrbdqvnextint.azurecr.io
+          #username: ${{ secrets.ACR_USERNAME }}
+          #password: ${{ secrets.ACR_PASSWORD }}
+      - name: Build Docker Image and Push to ACR
         uses: docker/build-push-action@v4
         with:
           context: ./docker
           push: false
-          tags: user/app:latest
+          tags: acrbdqvnextint.azurecr.io/bdqvnext-dev/bdqv-core-be:${{ env.SHORT_SHA }}
