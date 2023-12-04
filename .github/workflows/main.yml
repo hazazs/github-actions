@@ -23,7 +23,7 @@ jobs:
         run: mvn verify -Dsurefire.skip=true -P bmw --batch-mode
       - name: Print SHORT_SHA
         run: echo ${{ env.SHORT_SHA }}
-      - name: Docker Login to ACR
+      #- name: Docker Login to ACR
         #uses: azure/docker-login@v1
         #with:
           #login-server: acrbdqvnextint.azurecr.io
