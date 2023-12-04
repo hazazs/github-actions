@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Prepare Java and Maven
+      - name: Prepare Agent
         uses: actions/setup-java@v4
         with:
           java-version: '11'
@@ -23,3 +23,9 @@ jobs:
         run: mvn verify -Dsurefire.skip=true -P bmw --batch-mode
       - name: Print SHORT_SHA
         run: echo ${{ env.SHORT_SHA }}
+      - name: Build Docker-Image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./docker
+          push: false
+          tags: user/app:latest
