@@ -7,7 +7,7 @@ on:
         default: bdqv-core-be
 jobs:
   maven-build-and-test:
-    runs-on: ubuntu-20.04.6
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
