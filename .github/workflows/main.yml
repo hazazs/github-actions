@@ -47,3 +47,4 @@ jobs:
           context: ./docker
           push: false
           tags: acrbdqvnextint.azurecr.io/bdqvnext-dev/${{ env.artifactName }}:${{ env.SHORT_SHA }}
+          buildArgs: --no-cache
