@@ -1,5 +1,5 @@
 name: bdqv-core-be-acr
-run-name: ${{ github.event.head_commit.message }}
+run-name: ${{ github.run_id }}
 on:
   workflow_dispatch:
     inputs:
