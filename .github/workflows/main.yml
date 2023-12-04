@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       NO_CACHE:
-        default: 'false'
+        default: 'true'
        # description: Do you want to build the Docker image with --no-cache?
       skipIntegrationTests:
         type: boolean
