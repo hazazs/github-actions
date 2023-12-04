@@ -10,5 +10,5 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
-      - run: mvn clean package -DskipTests=true
+      - run: mvn clean package -DskipTests=true -P bmw
       - run: mvn test
