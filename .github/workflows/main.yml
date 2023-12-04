@@ -2,6 +2,9 @@ name: 01_BuildStageACR
 run-name: bdqv-core-be-acr
 on:
   workflow_dispatch:
+    inputs:
+      artifactName:
+        default: bdqv-core-be
 jobs:
   maven-build-and-test:
     runs-on: ubuntu-latest
@@ -35,4 +38,4 @@ jobs:
         with:
           context: ./docker
           push: false
-          tags: acrbdqvnextint.azurecr.io/bdqvnext-dev/bdqv-core-be:${{ env.SHORT_SHA }}
+          tags: acrbdqvnextint.azurecr.io/bdqvnext-dev/${{ github.event.inputs.artifactName }}:${{ env.SHORT_SHA }}
