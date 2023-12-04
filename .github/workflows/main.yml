@@ -5,9 +5,7 @@ on:
       NO_CACHE:
         type: boolean
         default: 'true'
-        description:
-          NO_CACHE
-          Do you want to build the Docker image with --no-cache?
+        description: 'NO_CACHE<br>Do you want to build the Docker image with --no-cache?'
       skipIntegrationTests:
         type: boolean
         default: 'false'
