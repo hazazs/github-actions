@@ -12,3 +12,5 @@ jobs:
           distribution: 'zulu'
       - run: mvn clean package -DskipTests=true -P bmw --batch-mode
       - run: mvn test -P bmw --batch-mode
+      - run: mvn verify -Dsurefire.skip=true --batch-mode
+      
