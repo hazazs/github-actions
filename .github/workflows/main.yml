@@ -10,7 +10,5 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
-      - run: mvn -v
-      - run: pwd
-      - run: ls
-      - run: mvn clean package
+      - run: mvn clean package -DskipTests=true
+      - run: mvn test
