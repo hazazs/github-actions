@@ -1,4 +1,5 @@
-name: learn-github-actions
+name: 01_BuildStageACR
+run-name: bdqv-core-be-acr
 on: [push]
 jobs:
   maven-build-and-test:
