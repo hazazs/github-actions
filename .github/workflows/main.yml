@@ -13,3 +13,4 @@ jobs:
       - run: mvn test -P bmw --batch-mode
       - run: mvn verify -Dsurefire.skip=true -P bmw --batch-mode
       - run: echo ${{ github.sha }}
+      - run: echo ${GITHUB_SHA} | cut -c1-8
