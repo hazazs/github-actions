@@ -7,14 +7,12 @@ import java.util.stream.Collectors;
 
 final class MyLinkedList<E extends Serializable> implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 1L;
     private transient int size;
     private transient MyLink<E> head;
 
     private static class MyLink<E extends Serializable> implements Serializable {
 
-        @Serial
         private static final long serialVersionUID = 1L;
         private final E element;
         private MyLink<E> next;
@@ -30,7 +28,6 @@ final class MyLinkedList<E extends Serializable> implements Serializable {
 
     }
 
-    @Serial
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
         out.writeInt(size);
@@ -39,7 +36,6 @@ final class MyLinkedList<E extends Serializable> implements Serializable {
         }
     }
 
-    @Serial
     @SuppressWarnings("unchecked")
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
