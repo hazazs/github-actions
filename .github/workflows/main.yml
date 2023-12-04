@@ -1,6 +1,7 @@
 name: 01_BuildStageACR
 run-name: bdqv-core-be-acr
-on: [push]
+on:
+  workflow_dispatch:
 jobs:
   maven-build-and-test:
     runs-on: ubuntu-latest
