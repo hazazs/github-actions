@@ -10,5 +10,5 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
-      - run: mvn clean package -DskipTests=true -P bmw
+      - run: mvn clean package -DskipTests=true -P bmw -s jenkinsSettings.xml
       - run: mvn test
