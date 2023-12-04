@@ -1,6 +1,6 @@
 name: bdqv-core-be-acr
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       noCache:
         type: boolean
@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      #- name: fasdfasdf
+        #run: echo "myBooleanInput is ${{ github.event.inputs.skipIntegrationTests }}"
       - name: Prepare Agent
         uses: actions/setup-java@v4
         with:
