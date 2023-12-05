@@ -54,7 +54,7 @@ jobs:
           #find: '[{ "find": "username-to-change", "replace": "tibot" }, { "find": "password-to-change", "replace": "passport" }]'
         uses: Mudlet/xmlstarlet-action@v1.2
         with:
-          args: |
+          args: >
             ed -L --update "/servers/server/username" -v "tibot" "jenkins.xml"
             ed -L --update "/servers/server/password" -v "passport" "jenkins.xml"
       - name: Print jenkins.xml
