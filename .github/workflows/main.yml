@@ -43,11 +43,15 @@ jobs:
       - name: Print jenkins.xml
         run: cat jenkins.xml
       - name: Replace servers
-        uses: jacobtomlinson/gha-find-replace@v3
+       # uses: jacobtomlinson/gha-find-replace@v3
+        #with:
+         # find: username-to-change
+          #replace: tibot
+          #include: jenkins.xml
+        uses: flcdrg/replace-multiple-action@v1
         with:
-          find: username-to-change
-          replace: tibot
-          include: jenkins.xml
+          files: jenkins.xml
+          find: '[{ "find": "username-to-change", "replace": "tibot" }, { "find": "password-to-change", "replace": "passport" }]'
       - name: Print jenkins.xml
         run: cat jenkins.xml  
         
