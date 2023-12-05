@@ -48,10 +48,15 @@ jobs:
          # find: username-to-change
           #replace: tibot
           #include: jenkins.xml
-        uses: flcdrg/replace-multiple-action@v1
+       # uses: flcdrg/replace-multiple-action@v1
+        #with:
+         # files: jenkins.xml
+          #find: '[{ "find": "username-to-change", "replace": "tibot" }, { "find": "password-to-change", "replace": "passport" }]'
+        uses: Mudlet/xmlstarlet-action@v1.2
         with:
-          files: jenkins.xml
-          find: '[{ "find": "username-to-change", "replace": "tibot" }, { "find": "password-to-change", "replace": "passport" }]'
+          args: |
+            ed -L --update "/servers/server/username" -v "tibot" "jenkins.xml"
+            ed -L --update "/servers/server/password" -v "passport" "jenkins.xml"
       - name: Print jenkins.xml
         run: cat jenkins.xml  
         
