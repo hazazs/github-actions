@@ -3,16 +3,12 @@ run-name: "#${{ github.run_number }}"
 on:
   workflow_dispatch:
     inputs:
-      NO_CACHE:
-        type: boolean
-        default: 'true'
-        description: |
-          NO_CACHE
-          Do you want to build the Docker image with --no-cache?
-      skipIntegrationTests:
+      SKIP_INTEGRATION_TESTS:
         type: boolean
         default: 'false'
-        description: 'Warning: Disabling this might cause deployment of hidden errors. Use this only with testing purposes.'
+        description: >
+          SKIP_INTEGRATION_TESTS |
+          Warning: Enabling this might cause deployment of hidden errors. Use this only with testing purposes.
 jobs:
   maven-build-and-test:
     runs-on: ubuntu-20.04
