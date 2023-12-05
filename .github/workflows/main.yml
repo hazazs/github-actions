@@ -45,9 +45,9 @@ jobs:
       - name: Replace servers
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: "oldContent"
-          replace: "newContent"
-          include: 'jenkins.xml'
+          find: username-to-change
+          replace: ${{ secret.SERVER_USERNAME }}
+          include: jenkins.xml
       - name: Print jenkins.xml
         run: cat jenkins.xml  
         
