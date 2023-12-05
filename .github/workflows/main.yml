@@ -39,28 +39,12 @@ jobs:
           maven-version: 3.8.6
       - name: Adjust version info
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-
-      - name: Print jenkins.xml
-        run: cat jenkins.xml
       - name: Update Nexus servers
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: username-to-change</username><password>password-to-change
           replace: ${{ secrets.NEXUS_SERVER_USERNAME }}</username><password>${{ secrets.NEXUS_SERVER_PASSWORD }}
-          include: jenkins.xml
-       # uses: flcdrg/replace-multiple-action@v1
-        #with:
-         # files: jenkins.xml
-          #find: '[{ "find": "username-to-change", "replace": "tibot" }, { "find": "password-to-change", "replace": "passport" }]'
-        #uses: Mudlet/xmlstarlet-action@v1.2
-        #with:
-         # args: >
-           # ed -L --update "/servers/server/username" -v "tibot" "jenkins.xml"
-          #  ed -L --update "/servers/server/password" -v "passport" "jenkins.xml"
-      - name: Print jenkins.xml
-        run: cat jenkins.xml
-      - name: Secret
-        run: echo ${{ secrets.NEXUS_SERVER_USERNAME }}
+          include: settings.xml
         
       - name: Compile sources
         run: mvn clean package -DskipTests=true -P bmw --batch-mode
