@@ -33,6 +33,7 @@ jobs:
           java-version: 11
           distribution: zulu
           cache: maven
+          cache-dependency-path: ./pom.xml
       - name: Adjust version info
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - name: Compile Sources
@@ -56,4 +57,3 @@ jobs:
           context: ./docker
           push: false
           tags: ${{ env.registry }}/${{ env.namespace }}/${{ env.artifactName }}:0.0.1-${{ env.SHORT_SHA }}
-          build-args: ${{ github.event.inputs.NO_CACHE == 'true' && '--no-cache' || '' }}
