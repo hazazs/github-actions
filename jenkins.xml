@@ -1,0 +1,10 @@
+<server>
+  <id>bdqv-next-snapshots</id>
+  <username>username-to-change</username>
+  <password>password-to-change</password>
+</server>
+<server>
+  <id>bdqv-next-releases</id>
+  <username>username-to-change</username>
+  <password>password-to-change</password>
+</server>
