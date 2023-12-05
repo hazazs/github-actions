@@ -42,11 +42,11 @@ jobs:
 
       - name: Print jenkins.xml
         run: cat jenkins.xml
-      - name: Replace servers
+      - name: Update Nexus servers
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: <username>username-to-change</username><password>password-to-change</password>
-          replace: <username>tibot</username><password>passport</password>
+          find: username-to-change</username><password>password-to-change
+          replace: ${{ secrets.NEXUS_SERVER_USERNAME }}</username><password>${{ secrets.NEXUS_SERVER_PASSWORD }}
           include: jenkins.xml
        # uses: flcdrg/replace-multiple-action@v1
         #with:
