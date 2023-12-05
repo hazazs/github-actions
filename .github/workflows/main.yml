@@ -32,8 +32,6 @@ jobs:
         with:
           java-version: 11
           distribution: zulu
-          cache: maven
-          #cache-dependency-path: ./pom.xml
       - name: Adjust version info
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - name: Compile Sources
