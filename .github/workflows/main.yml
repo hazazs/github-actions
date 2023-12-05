@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version: 11
@@ -37,10 +37,20 @@ jobs:
         uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.8.6
-      - name: Check Maven version
-        run: mvn -v
       - name: Adjust version info
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
+      - name: Print jenkins.xml
+        run: cat jenkins.xml
+      - name: Replace servers
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "oldContent"
+          replace: "newContent"
+          include: 'jenkins.xml'
+      - name: Print jenkins.xml
+        run: cat jenkins.xml  
+        
       - name: Compile sources
         run: mvn clean package -DskipTests=true -P bmw --batch-mode
       - name: Execute Unit Tests
