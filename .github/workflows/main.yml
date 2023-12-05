@@ -46,7 +46,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: username-to-change
-          replace: ${{ secret.SERVER_USERNAME }}
+          replace: tibot
           include: jenkins.xml
       - name: Print jenkins.xml
         run: cat jenkins.xml  
