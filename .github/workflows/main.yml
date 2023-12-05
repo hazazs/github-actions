@@ -20,10 +20,11 @@ jobs:
   bdqv-core-be-acr:
     runs-on: ubuntu-20.04
     env:
-      artifactName: bdqv-core-be
-      namespace: bdqvnext-dev
       sonarUrl: https://bdqvnext.bmwgroup.net/bdqvnext/sonar/
       registry: acrbdqvnextint.azurecr.io
+      namespace: bdqvnext-dev
+      artifactName: bdqv-core-be
+      release: 0.0.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,9 +33,15 @@ jobs:
         with:
           java-version: 11
           distribution: zulu
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.8.6
+      - name: Check Maven version
+        run: mvn -v
       - name: Adjust version info
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-      - name: Compile Sources
+      - name: Compile sources
         run: mvn clean package -DskipTests=true -P bmw --batch-mode
       - name: Execute Unit Tests
         run: mvn test -P bmw --batch-mode
@@ -54,4 +61,4 @@ jobs:
         with:
           context: ./docker
           push: false
-          tags: ${{ env.registry }}/${{ env.namespace }}/${{ env.artifactName }}:0.0.1-${{ env.SHORT_SHA }}
+          tags: ${{ env.registry }}/${{ env.namespace }}/${{ env.artifactName }}:${{ env.release }}-${{ env.SHORT_SHA }}
