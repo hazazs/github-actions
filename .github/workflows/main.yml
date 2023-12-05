@@ -43,20 +43,24 @@ jobs:
       - name: Print jenkins.xml
         run: cat jenkins.xml
       - name: Replace servers
-       # uses: jacobtomlinson/gha-find-replace@v3
-        #with:
-         # find: username-to-change
-          #replace: tibot
-          #include: jenkins.xml
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: |
+            <username>username-to-change</username>
+            <password>password-to-change</password>
+          replace: |
+            <username>tibot</username>
+            <password>passpower</password>
+          include: jenkins.xml
        # uses: flcdrg/replace-multiple-action@v1
         #with:
          # files: jenkins.xml
           #find: '[{ "find": "username-to-change", "replace": "tibot" }, { "find": "password-to-change", "replace": "passport" }]'
-        uses: Mudlet/xmlstarlet-action@v1.2
-        with:
-          args: >
-            ed -L --update "/servers/server/username" -v "tibot" "jenkins.xml"
-            ed -L --update "/servers/server/password" -v "passport" "jenkins.xml"
+        #uses: Mudlet/xmlstarlet-action@v1.2
+        #with:
+         # args: >
+           # ed -L --update "/servers/server/username" -v "tibot" "jenkins.xml"
+          #  ed -L --update "/servers/server/password" -v "passport" "jenkins.xml"
       - name: Print jenkins.xml
         run: cat jenkins.xml  
         
