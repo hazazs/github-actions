@@ -45,12 +45,8 @@ jobs:
       - name: Replace servers
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: |
-            <username>username-to-change</username>
-            <password>password-to-change</password>
-          replace: |
-            <username>tibot</username>
-            <password>passpower</password>
+          find: <username>username-to-change</username><password>password-to-change</password>
+          replace: <username>tibot</username><password>passport</password>
           include: jenkins.xml
        # uses: flcdrg/replace-multiple-action@v1
         #with:
