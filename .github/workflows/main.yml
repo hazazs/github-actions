@@ -58,7 +58,9 @@ jobs:
            # ed -L --update "/servers/server/username" -v "tibot" "jenkins.xml"
           #  ed -L --update "/servers/server/password" -v "passport" "jenkins.xml"
       - name: Print jenkins.xml
-        run: cat jenkins.xml  
+        run: cat jenkins.xml
+      - name: Secret
+        run: echo ${{ secrets.NEXUS_SERVER_USERNAME }}
         
       - name: Compile sources
         run: mvn clean package -DskipTests=true -P bmw --batch-mode
